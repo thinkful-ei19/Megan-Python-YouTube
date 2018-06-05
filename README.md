@@ -1,21 +1,21 @@
-#Youtube Trending Graph Analysis
+# Youtube Trending Graph Analysis
 
 ## Table of Contents:
 -Technology Used
 -Description
 -Brief Overview of Files
 
-###Technology Used:
+### Technology Used:
 -Python
 -Packages:
     -Beautiful Soup
     -Requests
     -MatPlotLib
 
-###Description:
+### Description:
 Upon completion, this app will pull data from the top 5 videos trending on YouTube and graph their view counts.  As an extended task, this app will also compare the views every hour and graph the change in viewcount so we can see the rate at which the views are growing per hour.
 
-###Brief Overview of Files:
+### Brief Overview of Files:
 youtube-grabber.py
     -will grab the urls of the top 5 trending youtube videos by using BeautifulSoup.  Then the file will either use the YouTube api to check the viewcount of each video or use BeautifulSoup again to find the viewcount(depending on YouTube API capabilities and the information given from the original Beautiful Soup response)
 view-graph.py
