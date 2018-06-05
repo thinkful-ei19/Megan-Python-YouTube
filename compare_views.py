@@ -2,9 +2,10 @@
 # find based on url name or title and compare the viewcounts
 
 import youtube_grabber
+from threading import Timer
+
 
 videoObj1=dict()
-videoObj2=dict()
 
 def startCompare():
 
@@ -15,8 +16,7 @@ def startCompare():
     videoObj1['3']= [videos['Video3']['Title'], int(videos['Video3']['Views'].replace(',', ''))]
     videoObj1['4']= [videos['Video4']['Title'], int(videos['Video4']['Views'].replace(',', ''))]
     videoObj1['5']= [videos['Video5']['Title'], int(videos['Video5']['Views'].replace(',', ''))]
-    # print(videoObj1)
-
+    return videoObj1
 startCompare()
 
 def endCompare(videoObj1):
@@ -56,5 +56,11 @@ def endCompare(videoObj1):
     print(lst)
     return lst
             
-
 endCompare(videoObj1)
+
+# May need to add these functions together and place a timer as the return for when it's called
+# r = Timer(1, startCompare, ())
+# s = Timer(2, endCompare, (videoObj1))
+
+# r.start()
+# s.start()
