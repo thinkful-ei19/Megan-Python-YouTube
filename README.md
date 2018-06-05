@@ -4,6 +4,7 @@
 -Technology Used
 -Description
 -Brief Overview of Files
+-References
 
 ### Technology Used:
 -Python
@@ -24,3 +25,6 @@ compare-views.py
     -will store the viewcount and then compare the views of each video every hour so we can see the rate of change for each video
 difference-in-an-hour-graph.py
     -will use the information from compare-views.py to graph the change in viewcount per hour for each video
+
+###References:
+-Used https://github.com/jessecordeiro/youtube-trending-videos-scraper/blob/master/youtube_trending_scraper/scraper.py as a base for ideas on how to work Beautiful Soup and get original HTML back, understood and changed based on needs for this app
