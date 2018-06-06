@@ -5,7 +5,9 @@ import youtube_grabber
 from threading import Timer
 import time
 import difference_graph
+import view_graph
 
+view_graph.originalGraph()
 
 videoObj1=dict()
 lst = [None] * 5
