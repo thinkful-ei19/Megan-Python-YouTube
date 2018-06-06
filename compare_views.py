@@ -7,7 +7,9 @@ import time
 import difference_graph
 import view_graph
 
+
 view_graph.originalGraph()
+
 
 videoObj1=dict()
 lst = [None] * 5
@@ -36,7 +38,7 @@ def endCompare(videoObj1):
     fifthTitle=videoObj1['5'][0]
     fifthView=videoObj1['5'][1]
 
-    time.sleep(60)
+    time.sleep(2)
     count=0
     videos= youtube_grabber.videoInfo()
     while count < 60:
