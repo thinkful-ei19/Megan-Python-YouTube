@@ -4,9 +4,11 @@
 import youtube_grabber
 from threading import Timer
 import time
+import difference_graph
 
 
 videoObj1=dict()
+lst = [None] * 5
 
 def startCompare():
 
@@ -32,9 +34,8 @@ def endCompare(videoObj1):
     fifthTitle=videoObj1['5'][0]
     fifthView=videoObj1['5'][1]
 
-    time.sleep(60*30)
+    time.sleep(2)
     count=0
-    lst = [None] * 5
     videos= youtube_grabber.videoInfo()
     while count < 60:
         count=count+1
@@ -59,9 +60,4 @@ def endCompare(videoObj1):
             
 endCompare(videoObj1)
 
-# May need to add these functions together and place a timer as the return for when it's called
-# r = Timer(1, startCompare, ())
-# s = Timer(2, endCompare, (videoObj1))
-
-# r.start()
-# s.start()
+difference_graph.differenceChart(videoObj1, lst)

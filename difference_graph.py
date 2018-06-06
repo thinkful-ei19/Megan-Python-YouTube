@@ -4,19 +4,19 @@ from matplotlib.gridspec import GridSpec
 
 def differenceChart(videoObj1, lst):
     firstTitle=videoObj1['1'][0]
-    firstViewDifference=lst['1'][1]
+    firstViewDifference=lst[0]
 
     secondTitle=videoObj1['2'][0]
-    secondViewDiff=lst['2'][1]
+    secondViewDiff=lst[1]
 
     thirdTitle=videoObj1['3'][0]
-    thirdViewDiff=lst['3'][1]
+    thirdViewDiff=lst[2]
 
     fourthTitle=videoObj1['4'][0]
-    fourthViewDiff=lst['4'][1]
+    fourthViewDiff=lst[3]
 
     fifthTitle=videoObj1['5'][0]
-    fifthViewDiff=lst['5'][1]
+    fifthViewDiff=lst[4]
 
     labels = firstTitle , secondTitle, thirdTitle, fourthTitle, fifthTitle
     fracs = [int(firstViewDifference), int(secondViewDiff), int(thirdViewDiff), int(fourthViewDiff), int(fifthViewDiff)]
@@ -30,7 +30,7 @@ def differenceChart(videoObj1, lst):
 
     explode = (0.05, 0, 0, 0, 0)
 
-    the_grid = GridSpec(0, 1)
+    the_grid = GridSpec(2, 1)
 
     plt.subplot(the_grid[0, 0], aspect=1)
 
