@@ -3,6 +3,7 @@
 
 import youtube_grabber
 from threading import Timer
+import time
 
 
 videoObj1=dict()
@@ -20,8 +21,6 @@ def startCompare():
 startCompare()
 
 def endCompare(videoObj1):
-    videos= youtube_grabber.videoInfo()
-
     firstTitle=videoObj1['1'][0]
     firstView=videoObj1['1'][1]
     secondTitle=videoObj1['2'][0]
@@ -33,9 +32,11 @@ def endCompare(videoObj1):
     fifthTitle=videoObj1['5'][0]
     fifthView=videoObj1['5'][1]
 
+    time.sleep(60*30)
     count=0
     lst = [None] * 5
-    while count < 66:
+    videos= youtube_grabber.videoInfo()
+    while count < 60:
         count=count+1
         video= videos['Video{}'.format(count)]
         if video['Title'] == firstTitle:
