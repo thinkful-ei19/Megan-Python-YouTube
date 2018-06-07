@@ -57,7 +57,7 @@ def graphs(videos,videoObj1, lst):
 
     # if the % is greater than 0% then go ahead and show it, if not then set that place to an empty string to not show:
     def my_autopct(pct):
-        return ('%.2f' % pct) if pct > 0 else ''
+        return ('%1.0f%%' % pct) if pct > 0 else ''
 
     explode = (0.05, 0, 0, 0, 0)
 

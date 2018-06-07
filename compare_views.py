@@ -33,7 +33,7 @@ def endCompare(videoObj1):
     fifthTitle=videoObj1['5'][0]
     fifthView=videoObj1['5'][1]
 
-    time.sleep(2)
+    time.sleep(60*10)
     count=0
     videosVersion2= youtube_grabber.videoInfo()
     while count < 60:
