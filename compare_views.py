@@ -7,16 +7,11 @@ import time
 import difference_graph
 import view_graph
 
-
-view_graph.originalGraph()
-
-
 videoObj1=dict()
 lst = [None] * 5
+videos= youtube_grabber.videoInfo()
 
 def startCompare():
-
-    videos= youtube_grabber.videoInfo()
 
     videoObj1['1']= [videos['Video1']['Title'], int(videos['Video1']['Views'].replace(',', ''))]
     videoObj1['2']= [videos['Video2']['Title'], int(videos['Video2']['Views'].replace(',', ''))]
@@ -40,10 +35,10 @@ def endCompare(videoObj1):
 
     time.sleep(2)
     count=0
-    videos= youtube_grabber.videoInfo()
+    videosVersion2= youtube_grabber.videoInfo()
     while count < 60:
         count=count+1
-        video= videos['Video{}'.format(count)]
+        video= videosVersion2['Video{}'.format(count)]
         if video['Title'] == firstTitle:
             difference= int(video['Views'].replace(',', '')) - firstView
             lst[0]=difference
@@ -64,4 +59,4 @@ def endCompare(videoObj1):
             
 endCompare(videoObj1)
 
-difference_graph.differenceChart(videoObj1, lst)
+view_graph.graphs(videos, videoObj1, lst)

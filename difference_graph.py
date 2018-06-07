@@ -18,8 +18,8 @@ def differenceChart(videoObj1, lst):
     fifthTitle="Fifth Place View Change: \n" + videoObj1['5'][0]
     fifthViewDiff=lst[4]
 
-    labels = firstTitle , secondTitle, thirdTitle, fourthTitle, fifthTitle
-    fracs = [int(firstViewDifference), int(secondViewDiff), int(thirdViewDiff), int(fourthViewDiff), int(fifthViewDiff)]
+    labels2 = firstTitle , secondTitle, thirdTitle, fourthTitle, fifthTitle
+    fracs2 = [int(firstViewDifference), int(secondViewDiff), int(thirdViewDiff), int(fourthViewDiff), int(fifthViewDiff)]
 
     def make_autopct(fracValues):
         def my_autopct(pct):
@@ -28,14 +28,14 @@ def differenceChart(videoObj1, lst):
             return '{p:.2f}%  \n ({v:d})'.format(p=pct,v=val)
         return my_autopct
 
-    explode = (0.05, 0, 0, 0, 0)
+    explode2 = (0.05, 0, 0, 0, 0)
 
-    the_grid = GridSpec(2, 1)
+    the_grid2 = GridSpec(2, 1)
 
-    plt.subplot(the_grid[0, 0], aspect=1)
+    plt.subplot(the_grid2[0, 0], aspect=1)
 
-    patches, texts, autotexts = plt.pie(fracs, explode=explode, labels=labels,
-                                        autopct=make_autopct(fracs),
+    patches, texts, autotexts = plt.pie(fracs2, explode=explode2, labels=labels2,
+                                        autopct=make_autopct(fracs2),
                                         shadow=True, radius=1)
 
     for t in texts:
