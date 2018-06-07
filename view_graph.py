@@ -44,13 +44,20 @@ def graphs(videos,videoObj1, lst):
     
     labels2 = firstTitle , secondTitle, thirdTitle, fourthTitle, fifthTitle
     fracs2 = [int(firstViewDifference), int(secondViewDiff), int(thirdViewDiff), int(fourthViewDiff), int(fifthViewDiff)]
+            
 
-    def make_autopct(fracValues):
-        def my_autopct(pct):
-            total = sum(fracValues)
-            val = int(round(pct*total/100.0))
-            return '{p:.2f}%  \n ({v:d})'.format(p=pct,v=val)
-        return my_autopct
+
+    # incase I want to go back to displaying both percentages and viewcounts together:
+    # def make_autopct(fracValues):
+    #     def my_autopct(pct):
+    #         total = sum(fracValues)
+    #         val = int(round(pct*total/100.0))
+    #         return '{p:.2f}%  \n ({v:d})'.format(p=pct,v=val)
+    #     return my_autopct
+
+    # if the % is greater than 0% then go ahead and show it, if not then set that place to an empty string to not show:
+    def my_autopct(pct):
+        return ('%.2f' % pct) if pct > 0 else ''
 
     explode = (0.05, 0, 0, 0, 0)
 
@@ -59,7 +66,7 @@ def graphs(videos,videoObj1, lst):
     plt.subplot(the_grid[0, 0], aspect=1)
 
     patches, texts, autotexts = plt.pie(fracs, explode=explode,
-                                        autopct='%.0f%%', pctdistance=1.275,
+                                        autopct='%1.0f%%', pctdistance=1.275,
                                         shadow=True, radius=1, wedgeprops = {'linewidth': 3})
     
     for t in texts:
@@ -69,12 +76,12 @@ def graphs(videos,videoObj1, lst):
         t.set_size('x-small')
     
     plt.legend(patches, labels=labels, bbox_to_anchor=(1,1.025), loc="upper left")
-    plt.subplots_adjust(left=0.1, bottom=0.1, right=0.75)
+    plt.subplots_adjust(left=0.4, bottom=0.1, right=1.25)
 
     plt.subplot(the_grid[1, 1], aspect=1)
 
     patches, texts, autotexts = plt.pie(fracs2, explode=explode,
-                                        autopct='%.0f%%',pctdistance=1.125,
+                                        autopct=my_autopct,pctdistance=1.125,
                                         shadow=True, radius=1)
 
     for t in texts:
@@ -84,6 +91,6 @@ def graphs(videos,videoObj1, lst):
         t.set_size('x-small')
 
     plt.legend(patches, labels=labels2, bbox_to_anchor=(1,1), loc="upper left")
-    plt.subplots_adjust(left=0.1, bottom=0.1, right=0.5)
+    plt.subplots_adjust(left=0.1, bottom=0.1, right=0.6)
 
     plt.show()
