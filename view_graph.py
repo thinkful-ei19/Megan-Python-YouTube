@@ -2,17 +2,11 @@ import youtube_grabber
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 import matplotlib as mpl
-# mpl.rcParams['font.size'] = 9.0
-# mpl.rcParams['lines.linewidth'] = 20000000
+
 
 def graphs(videos,videoObj1, lst):
 
 # create original of viewcount:
-    vid1Title='First Place: \n' + videos['Video1']['Title']
-    vid2Title='Second Place: \n' + videos['Video2']['Title']
-    vid3Title='Third Place: \n' + videos['Video3']['Title']
-    vid4Title='Fourth Place: \n' + videos['Video4']['Title']
-    vid5Title='Fifth Place: \n' + videos['Video5']['Title']
 
     vid1Views=videos['Video1']['Views'].replace(',', '')
     vid2Views=videos['Video2']['Views'].replace(',', '')
@@ -20,23 +14,29 @@ def graphs(videos,videoObj1, lst):
     vid4Views=videos['Video4']['Views'].replace(',', '')
     vid5Views=videos['Video5']['Views'].replace(',', '')
 
+    vid1Title='First Place: \n'  + "Title: "+ videos['Video1']['Title']+ "\nViews: " +vid1Views
+    vid2Title='Second Place: \n'  + "Title: "+ videos['Video2']['Title']+ "\nViews: " +vid2Views
+    vid3Title='Third Place: \n'  + "Title: "+ videos['Video3']['Title']+ "\nViews: " +vid3Views
+    vid4Title='Fourth Place: \n'  + "Title: "+ videos['Video4']['Title']+ "\nViews: " +vid4Views
+    vid5Title='Fifth Place: \n'  + "Title: "+ videos['Video5']['Title']+ "\nViews: " +vid5Views
+
     
 
 # create difference:
-    firstTitle="First Place View Change: \n" + videoObj1['1'][0]
     firstViewDifference=lst[0]
+    firstTitle="First Place View Change: \n" + "Title: " + videoObj1['1'][0] + "\nView Change: " +str(firstViewDifference)
 
-    secondTitle="Second Place View Change: \n" +videoObj1['2'][0]
     secondViewDiff= lst[1]
-
-    thirdTitle="Third Place View Change: \n" +videoObj1['3'][0]
+    secondTitle="Second Place View Change: \n" +"Title: "+ videoObj1['2'][0]+ "\nView Change: " +str(secondViewDiff)
+    
     thirdViewDiff= lst[2]
-
-    fourthTitle="Fourth Place View Change: \n" +videoObj1['4'][0]
+    thirdTitle="Third Place View Change: \n" +"Title: "+videoObj1['3'][0]+ "\nView Change: " +str(thirdViewDiff)
+    
     fourthViewDiff= lst[3]
-
-    fifthTitle="Fifth Place View Change: \n" + videoObj1['5'][0]
+    fourthTitle="Fourth Place View Change: \n" +"Title: "+videoObj1['4'][0]+ "\nView Change: "+str(fourthViewDiff)
+    
     fifthViewDiff=lst[4]
+    fifthTitle="Fifth Place View Change: \n" +"Title: "+ videoObj1['5'][0]+ "\n View Change: "+str(fifthViewDiff)
 
     #start graphs:
     labels = vid1Title , vid2Title, vid3Title, vid4Title, vid5Title
@@ -59,11 +59,11 @@ def graphs(videos,videoObj1, lst):
     plt.subplot(the_grid[0, 0], aspect=1)
 
     patches, texts, autotexts = plt.pie(fracs, explode=explode,
-                                        autopct=make_autopct(fracs),
+                                        autopct='%.0f%%', pctdistance=1.275,
                                         shadow=True, radius=1, wedgeprops = {'linewidth': 3})
     
     for t in texts:
-        t.set_size('x-small')
+        t.set_size('smaller')
         t.set_multialignment('center')
     for t in autotexts:
         t.set_size('x-small')
@@ -74,11 +74,11 @@ def graphs(videos,videoObj1, lst):
     plt.subplot(the_grid[1, 1], aspect=1)
 
     patches, texts, autotexts = plt.pie(fracs2, explode=explode,
-                                        autopct=make_autopct(fracs2),
+                                        autopct='%.0f%%',pctdistance=1.125,
                                         shadow=True, radius=1)
 
     for t in texts:
-        t.set_size('x-small')
+        t.set_size('smaller')
         t.set_multialignment('center')
     for t in autotexts:
         t.set_size('x-small')
