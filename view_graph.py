@@ -58,13 +58,22 @@ def graphs(videos,videoObj1, lst):
 
     plt.subplot(the_grid[0, 0], aspect=1)
 
-    originalGraph = plt.pie(fracs, explode=explode, labels=labels,
+    patches, texts, autotexts = plt.pie(fracs, explode=explode,
                                         autopct=make_autopct(fracs),
-                                        shadow=True, radius=1)
+                                        shadow=True, radius=1, wedgeprops = {'linewidth': 3})
+    
+    for t in texts:
+        t.set_size('x-small')
+        t.set_multialignment('center')
+    for t in autotexts:
+        t.set_size('x-small')
+    
+    plt.legend(patches, labels=labels, bbox_to_anchor=(1,1.025), loc="upper left")
+    plt.subplots_adjust(left=0.1, bottom=0.1, right=0.75)
 
     plt.subplot(the_grid[1, 1], aspect=1)
 
-    differenceGraph, texts, autotexts = plt.pie(fracs2, explode=explode, labels=labels2,
+    patches, texts, autotexts = plt.pie(fracs2, explode=explode,
                                         autopct=make_autopct(fracs2),
                                         shadow=True, radius=1)
 
@@ -74,7 +83,7 @@ def graphs(videos,videoObj1, lst):
     for t in autotexts:
         t.set_size('x-small')
 
-    originalGraph.set_lw(40)
-
+    plt.legend(patches, labels=labels2, bbox_to_anchor=(1,1), loc="upper left")
+    plt.subplots_adjust(left=0.1, bottom=0.1, right=0.5)
 
     plt.show()
